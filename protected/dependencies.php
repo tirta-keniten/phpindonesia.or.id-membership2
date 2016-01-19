@@ -28,11 +28,11 @@ $container['view'] = function ($container) {
 	 * Registering some view helper / extensions functions
 	 * Actually this is not a middleware. I just put it here
 	 */
-	$view->registerFunction('append_js', function (array $js_files = []) use ($view) {
+	$view->getPlates()->registerFunction('append_js', function (array $js_files = []) use ($view) {
 		$view->getPlates()->addData(['_view_js_' => $js_files]);
 	});
 
-	$view->registerFunction('append_css', function (array $css_files = []) use ($view) {
+	$view->getPlates()->registerFunction('append_css', function (array $css_files = []) use ($view) {
 		$view->getPlates()->addData(['_view_css_' => $css_files]);
 	});
 
