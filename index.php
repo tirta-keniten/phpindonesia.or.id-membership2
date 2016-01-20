@@ -29,6 +29,7 @@ require 'vendor'._DS_.'autoload.php';
 require 'libraries'._DS_.'PlatesTemplate.php';
 require 'libraries'._DS_.'Validator.php';
 require 'libraries'._DS_.'PlatesUriExtension.php';
+require 'libraries'._DS_.'Messages.php';
 require 'libraries'._DS_.'PlatesFlashMessageExtension.php';
 require 'libraries'._DS_.'PlatesFormHelperExtension.php';
 require 'libraries'._DS_.'Hash.php';

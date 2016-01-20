@@ -1,5 +1,5 @@
 <?php
-$app->get('/apps/common-data/skills/{parent_id:[0-9]+}', function ($request, $response, $args) {
+$app->get('/common-data/skills/{parent_id:[0-9]+}', function ($request, $response, $args) {
 
     if ($request->isXhr()) {
         $q_skills = $this->db->createQueryBuilder()

@@ -1,5 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/apps/membership/update-password', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/update-password', function ($request, $response, $args) {
 
 	if ($request->isPost()) {
 		$db = $this->get('db');
@@ -55,11 +55,11 @@ $app->map(['GET', 'POST'], '/apps/membership/update-password', function ($reques
         		'modified_by' => $_SESSION['MembershipAuth']['user_id']
         	), array('user_id' => $_SESSION['MembershipAuth']['user_id']));
 
-        	$this->flash->addMessage('success', 'Password anda berhasil diubah! Selamat!');
+        	$this->flash->flashLater('success', 'Password anda berhasil diubah! Selamat!');
         	return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-profile'));
 
         } else {
-        	$this->flash->addMessage('warning', 'Masih ada isian-isian wajib yang belum anda isi. Atau masih ada isian yang belum diisi dengan benar');
+        	$this->flash->flashNow('warning', 'Masih ada isian-isian wajib yang belum anda isi. Atau masih ada isian yang belum diisi dengan benar');
         }
 	}
 

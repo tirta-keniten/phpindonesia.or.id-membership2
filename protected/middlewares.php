@@ -32,13 +32,12 @@ $app->add(function ($request, $response, $next) {
 	    $path = $uri->getPath();
 	}
 
-	// $request_path = $base_path.$path;
 	$request_path = $path;
 
 	$contain = false;
-    if ($request_path != '/apps/membership') {
+    if ($request_path != '/') {
     	foreach ($exclude_from_auth as $item) {
-            if ($item == '/apps/membership') {
+            if ($item == '/') {
                 continue;
             } else {
                 $str_path = str_replace('/', '\/', $item);

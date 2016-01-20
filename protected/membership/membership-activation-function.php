@@ -1,5 +1,5 @@
 <?php
-$app->get('/apps/membership/activation/{uid}/{activation_key}', function ($request, $response, $args) {
+$app->get('/activation/{uid}/{activation_key}', function ($request, $response, $args) {
 
     $db = $this->get('db');
 
@@ -26,11 +26,11 @@ $app->get('/apps/membership/activation/{uid}/{activation_key}', function ($reque
             'activation_key' => $args['activation_key']
         ));
 
-        $this->flash->addMessage('success', 'Selamat! Account anda sudah aktif. Silahkan login...');
+        $this->flash->flashLater('success', 'Selamat! Account anda sudah aktif. Silahkan login...');
         return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-login'));
 
     } else {
-        $this->flash->addMessage('error', 'Bad Request');
+        $this->flash->flashLater('error', 'Bad Request');
         return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-login'));
     }
 

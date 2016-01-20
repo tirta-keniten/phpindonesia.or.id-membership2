@@ -1,5 +1,5 @@
 <?php
-$app->get('/apps/membership/reset-password/{uid}/{reset_key}', function ($request, $response, $args) {
+$app->get('/reset-password/{uid}/{reset_key}', function ($request, $response, $args) {
 
     $db = $this->get('db');
 
@@ -65,16 +65,16 @@ $app->get('/apps/membership/reset-password/{uid}/{reset_key}', function ($reques
             $mailer->registerPlugin(new Swift_Plugins_DecoratorPlugin($replacements));
             $mailer->send($message);
 
-            $this->flash->addMessage('success', $success_msg);
+            $this->flash->flashLater('success', $success_msg);
             return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-login'));
 
         } catch (Swift_TransportException $e) {
-            $this->flash->addMessage('success', $success_msg_alt);
+            $this->flash->flashLater('success', $success_msg_alt);
             return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-login'));
         }
 
     } else {
-        $this->flash->addMessage('error', 'Bad Request');
+        $this->flash->flashLater('error', 'Bad Request');
         return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-login'));
     }
 

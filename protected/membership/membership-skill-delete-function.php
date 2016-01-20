@@ -1,5 +1,5 @@
 <?php
-$app->post('/apps/membership/skill/delete/{id:[0-9]+}', function ($request, $response, $args) {
+$app->post('/skill/delete/{id:[0-9]+}', function ($request, $response, $args) {
 
     $this->db->update('members_skills', array(
         'deleted' => 'Y',
@@ -8,7 +8,7 @@ $app->post('/apps/membership/skill/delete/{id:[0-9]+}', function ($request, $res
 
     $this->db->close();
 
-    $this->flash->addMessage('success', 'Item Skill berhasil dihapus');
+    $this->flash->flashLater('success', 'Item Skill berhasil dihapus');
 
     return $response->withStatus(302)
     ->withHeader('Location', $this->router->pathFor('membership-profile'));

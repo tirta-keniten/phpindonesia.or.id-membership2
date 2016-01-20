@@ -1,5 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/apps/membership/profile/edit', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/profile/edit', function ($request, $response, $args) {
 
     $db = $this->get('db');
 
@@ -134,18 +134,18 @@ $app->map(['GET', 'POST'], '/apps/membership/profile/edit', function ($request, 
                 $db->commit();
                 $db->close();
 
-                $this->flash->addMessage('success', 'Profile information successfuly updated! Congratulation!');
+                $this->flash->flashLater('success', 'Profile information successfuly updated! Congratulation!');
                 return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-profile'));
 
             } catch (Exception $e) {
                 $db->rollback();
                 $db->close();
 
-                $this->flash->addMessage('error', 'System failed<br />'.$e->getMessage());
+                $this->flash->flashNow('error', 'System failed<br />'.$e->getMessage());
             }
 
         } else {
-            $this->flash->addMessage('warning', 'Some of mandatory fields is empty!');
+            $this->flash->flashNow('warning', 'Some of mandatory fields is empty!');
         }
     }
 

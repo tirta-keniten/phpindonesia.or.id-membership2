@@ -1,5 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/apps/membership/login', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/login', function ($request, $response, $args) {
 
     if ($request->isPost()) {
 
@@ -85,12 +85,12 @@ $app->map(['GET', 'POST'], '/apps/membership/login', function ($request, $respon
 
                 $db->close();
 
-                $this->flash->addMessage('success', 'Welcome brother!');
+                $this->flash->flashLater('success', 'Welcome brother!');
                 return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-profile'));
             }
 
         } else {
-            $this->flash->addMessage('error', 'Wrong credentials');
+            $this->flash->flashLater('error', 'Wrong credentials');
             return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-login'));
         }
     }

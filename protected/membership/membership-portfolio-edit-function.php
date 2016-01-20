@@ -1,5 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/apps/membership/portfolio/edit/{id:[0-9]+}', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/portfolio/edit/{id:[0-9]+}', function ($request, $response, $args) {
 
 	$db = $this->get('db');
 
@@ -44,11 +44,11 @@ $app->map(['GET', 'POST'], '/apps/membership/portfolio/edit/{id:[0-9]+}', functi
                 'modified_by' => $_SESSION['MembershipAuth']['user_id']
             ), array('member_portfolio_id' => $_POST['member_portfolio_id']));
 
-            $this->flash->addMessage('success', 'Item portfolio berhasil diperbaharui. Selamat!');
+            $this->flash->flashLater('success', 'Item portfolio berhasil diperbaharui. Selamat!');
             return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-profile'));
 
         } else {
-        	$this->flash->addMessage('warning', 'Masih ada isian-isian wajib yang belum anda isi. Atau masih ada isian yang belum diisi dengan benar');
+        	$this->flash->flashNow('warning', 'Masih ada isian-isian wajib yang belum anda isi. Atau masih ada isian yang belum diisi dengan benar');
         }
 	}
 

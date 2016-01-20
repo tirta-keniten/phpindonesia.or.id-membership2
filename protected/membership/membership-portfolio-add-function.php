@@ -1,5 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/apps/membership/portfolio/add', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/portfolio/add', function ($request, $response, $args) {
 
 	$db = $this->get('db');
 
@@ -47,11 +47,11 @@ $app->map(['GET', 'POST'], '/apps/membership/portfolio/add', function ($request,
                 'deleted' => 'N'
             ));
 
-            $this->flash->addMessage('success', 'Item portfolio baru berhasil ditambahkan. Selamat! . Silahkan tambahkan lagi item portfolio anda.');
+            $this->flash->flashLater('success', 'Item portfolio baru berhasil ditambahkan. Selamat! . Silahkan tambahkan lagi item portfolio anda.');
             return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-profile'));
 
         } else {
-        	$this->flash->addMessage('warning', 'Masih ada isian-isian wajib yang belum anda isi. Atau masih ada isian yang belum diisi dengan benar');
+        	$this->flash->flashNow('warning', 'Masih ada isian-isian wajib yang belum anda isi. Atau masih ada isian yang belum diisi dengan benar');
         }
 	}
 

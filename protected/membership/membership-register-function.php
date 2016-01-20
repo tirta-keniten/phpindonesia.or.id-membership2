@@ -1,5 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/apps/membership/register', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/register', function ($request, $response, $args) {
 
     $db = $this->get('db');
     $gcaptcha_site_key = $this->get('settings')['gcaptcha']['site_key'];
@@ -165,7 +165,7 @@ $app->map(['GET', 'POST'], '/apps/membership/register', function ($request, $res
                 $db->close();
                 $trx_success = false;
 
-                $this->flash->addMessage('error', 'System gagal!<br />'.$e->getMessage());
+                $this->flash->flashNow('error', 'System gagal!<br />'.$e->getMessage());
 
             }
 
@@ -199,17 +199,17 @@ $app->map(['GET', 'POST'], '/apps/membership/register', function ($request, $res
 
                     $db->close();
 
-                    $this->flash->addMessage('success', $register_success_msg);
+                    $this->flash->flashLater('success', $register_success_msg);
                     return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-index'));
 
                 } catch (Swift_TransportException $e) {
-                    $this->flash->addMessage('success', $register_success_msg_alt);
+                    $this->flash->flashLater('success', $register_success_msg_alt);
                     return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('membership-index'));
                 }
             }
 
         } else {
-            $this->flash->addMessage('warning', 'Masih ada isian-isian wajib yang belum anda isi. Atau masih ada isian yang belum diisi dengan benar');
+            $this->flash->flashNow('warning', 'Masih ada isian-isian wajib yang belum anda isi. Atau masih ada isian yang belum diisi dengan benar');
         }
     }
 

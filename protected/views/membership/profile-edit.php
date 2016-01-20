@@ -181,7 +181,7 @@ $this->append_js(array(
 
 				</div>		
 
-				<div class="right-col-oprek">
+				<div class="right-col-oprek" style="margin-bottom: 25px;">
 					<fieldset>
 						<legend>Photo Profile</legend>
 						<div class="dt-sc-team">
@@ -225,11 +225,11 @@ $this->append_js(array(
 								    	</td>
 
 								    	<td>
-								    		<input type="text" name="socmeds[<?php echo $ii; ?>][account_name]" value="<?php echo $socmed['account_name']; ?>" placeholder="BUKAN FULLNAME. Contoh: @phpindonesia - for twitter, princessyahrini for instagram" />
+								    		<input type="text" name="socmeds[<?php echo $ii; ?>][account_name]" value="<?php echo $socmed['account_name']; ?>" />
 								    	</td>
 
 								    	<td>
-								    		<input type="text" name="socmeds[<?php echo $ii; ?>][account_url]" value="<?php echo $socmed['account_url']; ?>" placeholder="Contoh: https://www.facebook.com/profile.php?id=12345678 - Jika sosmed tidak memiliki fitur nickname seperti twitter." />
+								    		<input type="text" name="socmeds[<?php echo $ii; ?>][account_url]" value="<?php echo $socmed['account_url']; ?>" />
 								    	</td>
 
 								    	<td style="font-size: 1.5em">
@@ -285,7 +285,6 @@ $this->append_js(array(
 
 										<td>
 											<input type="text" class="input_full" id="socmed-account-name" />
-											<p style="color: #EA7120; font-size: 0.8em;">BUKAN FULLNAME.</p>
 										</td>
 									</tr>
 

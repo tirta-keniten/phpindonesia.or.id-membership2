@@ -1,5 +1,5 @@
 <?php
-$app->get('/apps/membership/profile', function ($request, $response, $args) {
+$app->get('/profile', function ($request, $response, $args) {
 
     $q_member = $this->db->createQueryBuilder()
     ->select(

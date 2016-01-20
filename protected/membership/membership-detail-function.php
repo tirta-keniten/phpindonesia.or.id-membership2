@@ -1,5 +1,5 @@
 <?php
-$app->get('/apps/membership/detail/{name}', function ($request, $response, $args) {
+$app->get('/detail/{name}', function ($request, $response, $args) {
 
     $db = $this->get('db');
 

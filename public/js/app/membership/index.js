@@ -6,7 +6,7 @@ jQuery("#provinces-dd").on('change', function () {
 	if (prov_id != '') {
         jQuery.ajax({
     		method: 'GET',
-    		url: _base_url_+'/apps/common-data/cities/'+prov_id,
+    		url: _base_url_+'/common-data/cities/'+prov_id,
     		dataType: 'json'
     	}).done(function (data) {
 

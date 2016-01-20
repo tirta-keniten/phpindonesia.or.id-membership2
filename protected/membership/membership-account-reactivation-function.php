@@ -1,5 +1,5 @@
 <?php
-$app->map(['GET', 'POST'], '/apps/membership/account-reactivation', function ($request, $response, $args) {
+$app->map(['GET', 'POST'], '/account-reactivation', function ($request, $response, $args) {
 
 	$gcaptcha_site_key = $this->get('settings')['gcaptcha']['site_key'];
     $gcaptcha_secret = $this->get('settings')['gcaptcha']['secret'];

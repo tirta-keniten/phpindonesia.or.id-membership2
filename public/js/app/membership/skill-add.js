@@ -4,7 +4,7 @@ jQuery("#skill-parent-id").on('change', function () {
     if (pid != '') {
         jQuery.ajax({
             method: 'GET',
-            url: _base_url_+'/apps/common-data/skills/'+pid,
+            url: _base_url_+'/common-data/skills/'+pid,
             dataType: 'json'
         }).done(function (data) {
 
